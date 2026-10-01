@@ -1,33 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script></head>
-<body class="min-h-screen flex flex-col">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="min-h-screen flex flex-col">
     <nav class="bg-blue-500 w-full py-6 px-12">
-        <div class="flex items-center justify-between">
-            <a href="/index.html">ALGUMACOISA-STORE</a>
-            
-            <ul class="style-none flex gap-4">
-                <li>
-                    <button class="border border-white/10 bg-white/5 p-2 rounded-full flex items-center justify-center cursor-pointer"><img src="/assets/images/moon.svg" alt="Carrinho de Compras" /></button>
-                </li>
-                <li>
-                    <button class="border border-white/10 bg-white/5 p-2 rounded-full flex items-center justify-center cursor-pointer"><img src="/assets/images/shopping-bag.svg" alt="Carrinho de Compras" /></button>
-                </li>
-            </ul>
-        </div>
+      <div class="flex items-center justify-between">
+        <a href="/index.html">ALGUMACOISA-STORE</a>
+
+        <ul class="style-none flex gap-4">
+          <li>
+            <button
+              class="border border-white/10 bg-white/5 p-2 rounded-full flex items-center justify-center cursor-pointer"
+            >
+              <img src="/assets/images/moon.svg" alt="Carrinho de Compras" />
+            </button>
+          </li>
+          <li>
+            <button
+              class="border border-white/10 bg-white/5 p-2 rounded-full flex items-center justify-center cursor-pointer"
+            >
+              <img
+                src="/assets/images/shopping-bag.svg"
+                alt="Carrinho de Compras"
+              />
+            </button>
+          </li>
+        </ul>
+      </div>
     </nav>
-    <main class="flex-1">
-        <h1 class="text-red-500">ALO</h1>    
+    <main class="flex-1 px-12 py-6">
+      <h1 class="text-red-500">ALO</h1>
+
+      <section id="products" class="grid grid-cols-3 gap-4"></section>
     </main>
     <footer class="bg-blue-500 w-full py-6 px-12">
-        <div class="flex items-center justify-center">
-            <span>&copy; 2026 ALGUMACOISA-STORE</span>
-        </div>
+      <div class="flex items-center justify-center">
+        <span>&copy; 2026 ALGUMACOISA-STORE</span>
+      </div>
     </footer>
-</body>
+
+    <script src="/mocks/game-data.js"></script>
+    <script src="/js/product.js"></script>
+  </body>
 </html>

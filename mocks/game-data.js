@@ -15,7 +15,7 @@ const platforms = {
   },
 
   nintendo: {
-    name: "Nintendo Switch",
+    name: "Nintendo",
     icon: "/assets/images/platforms/nintendo.svg",
   },
 };
