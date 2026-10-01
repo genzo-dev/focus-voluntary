@@ -1,3 +1,5 @@
+import { games, platforms } from "../mocks/game-data.js";
+
 const productsContainer = document.getElementById("products");
 
 function listPlatforms(gamePlatforms) {
@@ -14,7 +16,7 @@ function listPlatforms(gamePlatforms) {
     .join("");
 }
 
-function listProducts() {
+export function listProducts() {
   productsContainer.innerHTML = games
     .map((game) => {
       return `
@@ -29,7 +31,7 @@ function listProducts() {
           </div>
           <div class="flex items-center justify-between px-4 pb-4">
             <span>R$ ${game.price.toFixed(2)}</span>
-            <button class="bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 cursor-pointer transition">Adicionar ao carrinho</button>
+            <button onClick="addToCart(${game.id})" class="bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 cursor-pointer transition">Adicionar ao carrinho</button>
           </div>
       </div>
     `;
@@ -37,4 +39,4 @@ function listProducts() {
     .join("");
 }
 
-listProducts();
+// listProducts();

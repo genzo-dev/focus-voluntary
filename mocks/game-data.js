@@ -1,4 +1,4 @@
-const platforms = {
+export const platforms = {
   pc: {
     name: "PC",
     icon: "assets/images/platforms/pc.svg",
@@ -20,7 +20,7 @@ const platforms = {
   },
 };
 
-const games = [
+export const games = [
   {
     id: 1,
     name: "The Legend of Zelda: Breath of the Wild",
