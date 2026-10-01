@@ -31,6 +31,7 @@ export const games = [
     description:
       "Um jogo de mundo aberto de ação e aventura ambientado no reino de Hyrule.",
     imageUrl: "/assets/images/games/zelda.avif",
+    qtdCart: 0,
   },
   {
     id: 2,
@@ -43,6 +44,7 @@ export const games = [
     description:
       "Kratos e Atreus viajam por um mundo mitológico nórdico para espalhar as cinzas de Faye, sua falecida mãe.",
     imageUrl: "/assets/images/games/gow2018.avif",
+    qtdCart: 0,
   },
   {
     id: 3,
@@ -55,6 +57,7 @@ export const games = [
     description:
       "Final Fantasy XII: The Zodiac Age se passa no mundo de Ivalice, onde o pequeno reino de Dalmasca foi conquistado e anexado pelo Império Arcadiano.",
     imageUrl: "/assets/images/games/ff12.avif",
+    qtdCart: 0,
   },
   {
     id: 4,
@@ -66,6 +69,7 @@ export const games = [
     description:
       "A história de Hollow Knight: Silksong acompanha a princesa-protetora Hornet após ser capturada e levada para Pharloom, um reino desconhecido e dominado por seda e música.",
     imageUrl: "/assets/images/games/silksong.avif",
+    qtdCart: 0,
   },
   {
     id: 5,
@@ -78,6 +82,7 @@ export const games = [
     description:
       "Outer Wilds é um jogo de mistério e exploração espacial em mundo aberto onde você fica preso em um loop temporal, repetindo o mesmo período até descobrir como impedir que o sol exploda em uma supernova.",
     imageUrl: "/assets/images/games/outerwilds.jpg",
+    qtdCart: 0,
   },
   {
     id: 6,
@@ -90,5 +95,6 @@ export const games = [
     description:
       "Final Fantasy VII Remake conta a história do mercenário Cloud Strife em sua luta contra a megacorporação Shinra na metrópole de Midgar.",
     imageUrl: "/assets/images/games/ff7remake.jpeg",
+    qtdCart: 0,
   },
 ];

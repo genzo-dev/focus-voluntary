@@ -1,4 +1,5 @@
 import { games, platforms } from "../mocks/game-data.js";
+import { addToCart } from "./cart.js";
 
 const productsContainer = document.getElementById("products");
 
@@ -31,7 +32,7 @@ export function listProducts() {
           </div>
           <div class="flex items-center justify-between px-4 pb-4">
             <span>R$ ${game.price.toFixed(2)}</span>
-            <button onClick="addToCart(${game.id})" class="bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 cursor-pointer transition">Adicionar ao carrinho</button>
+            <button data-game-id="${game.id}" class="add-to-cart bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 cursor-pointer transition">Adicionar ao carrinho</button>
           </div>
       </div>
     `;
@@ -39,4 +40,12 @@ export function listProducts() {
     .join("");
 }
 
-// listProducts();
+export function setupAddToCartButtons() {
+  document.querySelectorAll(".add-to-cart").forEach((button) => {
+    button.addEventListener("click", () => {
+      const gameId = Number(button.dataset.gameId);
+
+      addToCart(gameId);
+    });
+  });
+}
