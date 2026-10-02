@@ -2,8 +2,22 @@ import { games } from "../mocks/game-data.js";
 
 const productsCart = document.getElementById("products-local-storage");
 const cartButton = document.getElementById("cart-button");
+const addOneProductByIdButton = document.getElementById(
+  "add-one-product-by-id",
+);
 
 cartButton?.addEventListener("click", toggleCart);
+productsCart?.addEventListener("click", (event) => {
+  const button = event.target.closest(".add-one-product-by-id");
+
+  if (!button) return;
+
+  const gameId = Number(button.dataset.gameId);
+
+  if (gameId) {
+    addOneToCart(gameId);
+  }
+});
 
 function getCartItems() {
   const cart = JSON.parse(localStorage.getItem("cart"));
@@ -60,7 +74,7 @@ export function displayCartItems() {
           </div>
 
           <div class="flex items-center justify-end gap-2 my-2 lg:mt-auto">
-            <button class="text-sm text-gray-400 hover:text-white cursor-pointer underline" title="Adicionar uma cópia desse item">Adicionar</button>
+            <button data-game-id="${games.id}" class="add-one-product-by-id text-sm text-gray-400 hover:text-white cursor-pointer underline" title="Adicionar uma cópia desse item">Adicionar</button>
             <div class="w-1 h-1 bg-gray-400 rounded-full"></div>
             <button class="text-sm text-gray-400 hover:text-white cursor-pointer underline" title="Remover do carrinho">Remover</button>
           </div>
@@ -69,6 +83,18 @@ export function displayCartItems() {
     `;
     })
     .join("");
+}
+
+export function addOneToCart(gameId) {
+  const cartItems = getCartItems();
+  const existingItem = cartItems.find((item) => item.id === gameId);
+
+  if (existingItem) {
+    existingItem.qtdCart += 1;
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    displayCartItems();
+    updateCartTotal();
+  }
 }
 
 export function updateCartTotal() {
