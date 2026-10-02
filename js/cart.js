@@ -70,6 +70,20 @@ export function addToCart(gameId) {
 
 export function displayCartItems() {
   const cartItems = getCartItems();
+
+  if (cartItems.length === 0) {
+    productsCart.classList.add(
+      "flex",
+      "items-center",
+      "justify-center",
+      "h-full",
+    );
+    productsCart.innerHTML = `<p>Seu carrinho está vazio</p>`;
+    return;
+  }
+
+  productsCart.classList.remove("items-center", "justify-center", "h-full");
+
   productsCart.innerHTML = cartItems
     .map((games) => {
       return `
