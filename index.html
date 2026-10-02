@@ -1,13 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
+    <link rel="stylesheet" href="./theme.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col bg-[var(--color-background)] text-[var(--color-text)]">
     <nav class="bg-blue-500 w-full py-6 px-12">
       <div class="flex items-center justify-between">
         <a href="/index.html">ALGUMACOISA-STORE</a>
@@ -15,9 +16,10 @@
         <ul class="style-none flex gap-4">
           <li>
             <button
+            id="theme-button"
               class="border border-white/10 bg-white/5 p-2 rounded-full flex items-center justify-center cursor-pointer"
             >
-              <img src="/assets/images/moon.svg" alt="Carrinho de Compras" />
+              <img src="/assets/images/moon.svg" alt="Mudar tema" />
             </button>
           </li>
           <li>
@@ -35,7 +37,7 @@
       </div>
       <div
         id="cart-container"
-        class="absolute hidden flex flex-col right-0 bg-black/70 border border-white/15 rounded-lg p-4 mr-12 mt-4 z-9999 h-[calc(100vh-8rem)] lg:h-90 lg:max-h-120 w-[calc(100vw-6rem)] lg:w-200"
+        class="absolute hidden flex flex-col right-0 bg-[var(--color-overlay)] border border-white/15 rounded-lg p-4 mr-12 mt-4 z-9999 h-[calc(100vh-8rem)] lg:h-90 lg:max-h-120 w-[calc(100vw-6rem)] lg:w-200"
       >
         <h2 class="text-white text-lg font-semibold mb-4">
           Carrinho de Compras

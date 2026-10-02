@@ -10,7 +10,7 @@ function listPlatforms(gamePlatforms) {
       return `
       <li class="flex items-center justify-center gap-2 bg-gray-200 p-2 rounded max-w-32">
         <img src="${platformData.icon}" alt="${platformData.name}" class="max-w-8" />
-        <span class="text-xs">${platformData.name}</span>
+        <span class="text-xs text-[var(--color-text-secondary)]">${platformData.name}</span>
       </li>
     `;
     })
@@ -21,7 +21,7 @@ export function listProducts() {
   productsContainer.innerHTML = games
     .map((game) => {
       return `
-      <div class="flex flex-col gap-2 border rounded shadow hover:shadow-lg hover:scale-102 transition">
+      <div class="flex flex-col gap-2 border border-[var(--color-border)] bg-[var(--color-surface)] rounded shadow hover:shadow-lg hover:scale-102 transition">
         <img src="${game.imageUrl}" alt="${game.name}" class="w-full h-48 object-cover" />
         <div class="p-4 flex-1 flex flex-col gap-2">
           <h3>${game.name}</h3>

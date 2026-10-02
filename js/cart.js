@@ -87,7 +87,7 @@ export function displayCartItems() {
   productsCart.innerHTML = cartItems
     .map((games) => {
       return `
-      <div class="flex flex-col lg:flex-row border rounded shadow hover:shadow-lg transition backdrop-blur-lg">
+      <div class="flex flex-col lg:flex-row border border-[var(--color-border-product)] rounded shadow hover:shadow-lg transition backdrop-blur-lg">
         <div class="lg:w-1/3">
           <img src="${games.imageUrl}" alt="${games.name}" class="w-full h-32 lg:h-36 object-cover" />
         </div>
