@@ -5,6 +5,9 @@ const cartButton = document.getElementById("cart-button");
 const addOneProductByIdButton = document.getElementById(
   "add-one-product-by-id",
 );
+const removeProductByIdBuitton = document.getElementById(
+  "remove-product-by-id",
+);
 
 cartButton?.addEventListener("click", toggleCart);
 productsCart?.addEventListener("click", (event) => {
@@ -16,6 +19,18 @@ productsCart?.addEventListener("click", (event) => {
 
   if (gameId) {
     addOneToCart(gameId);
+  }
+});
+
+productsCart?.addEventListener("click", (event) => {
+  const button = event.target.closest(".remove-product-by-id");
+
+  if (!button) return;
+
+  const gameId = Number(button.dataset.gameId);
+
+  if (gameId) {
+    removeItemFromCart(gameId);
   }
 });
 
@@ -76,7 +91,7 @@ export function displayCartItems() {
           <div class="flex items-center justify-end gap-2 my-2 lg:mt-auto">
             <button data-game-id="${games.id}" class="add-one-product-by-id text-sm text-gray-400 hover:text-white cursor-pointer underline" title="Adicionar uma cópia desse item">Adicionar</button>
             <div class="w-1 h-1 bg-gray-400 rounded-full"></div>
-            <button class="text-sm text-gray-400 hover:text-white cursor-pointer underline" title="Remover do carrinho">Remover</button>
+            <button data-game-id="${games.id}" class="remove-product-by-id text-sm text-gray-400 hover:text-white cursor-pointer underline" title="Remover do carrinho">Remover</button>
           </div>
         </div>
       </div>
@@ -95,6 +110,19 @@ export function addOneToCart(gameId) {
     displayCartItems();
     updateCartTotal();
   }
+}
+
+export function removeItemFromCart(gameId) {
+  const cartItems = getCartItems();
+  const existingItem = cartItems.find((item) => item.id === gameId);
+
+  if (!existingItem) return;
+
+  const index = cartItems.indexOf(existingItem);
+  cartItems.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+  displayCartItems();
+  updateCartTotal();
 }
 
 export function updateCartTotal() {
