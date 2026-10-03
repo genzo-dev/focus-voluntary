@@ -2,6 +2,7 @@ import { games, platforms } from "../mocks/game-data.js";
 import { addToCart } from "./cart.js";
 
 const productsContainer = document.getElementById("products");
+const searchInput = document.getElementById("product-search");
 
 function listPlatforms(gamePlatforms) {
   return gamePlatforms
@@ -17,8 +18,8 @@ function listPlatforms(gamePlatforms) {
     .join("");
 }
 
-export function listProducts() {
-  productsContainer.innerHTML = games
+export function listProducts(products = games) {
+  productsContainer.innerHTML = products
     .map((game) => {
       return `
       <div class="flex flex-col gap-2 border border-[var(--color-border)] bg-[var(--color-surface)] rounded shadow hover:shadow-lg hover:scale-102 transition">
@@ -41,11 +42,27 @@ export function listProducts() {
 }
 
 export function setupAddToCartButtons() {
-  document.querySelectorAll(".add-to-cart").forEach((button) => {
-    button.addEventListener("click", () => {
-      const gameId = Number(button.dataset.gameId);
+  productsContainer.addEventListener("click", (event) => {
+    const button = event.target.closest(".add-to-cart");
 
-      addToCart(gameId);
-    });
+    if (!button) return;
+
+    const gameId = Number(button.dataset.gameId);
+
+    addToCart(gameId);
   });
 }
+
+function searchProducts(query) {
+  const normalizedQuery = query.trim().toLowerCase();
+
+  const filteredGames = games.filter((game) =>
+    game.name.toLowerCase().includes(normalizedQuery),
+  );
+
+  listProducts(filteredGames);
+}
+
+searchInput.addEventListener("input", (event) => {
+  searchProducts(event.target.value);
+});

@@ -7,6 +7,7 @@ toggleThemeButton();
 
 listProducts();
 setupAddToCartButtons();
+// searchProducts();
 
 displayCartItems();
 updateCartTotal();
