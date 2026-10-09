@@ -15,6 +15,7 @@ loadTheme();
 toggleThemeButton();
 
 const products = document.getElementById("products");
+const checkoutForm = document.getElementById("checkout-form");
 
 if (products) {
   populateCategoryFilter();

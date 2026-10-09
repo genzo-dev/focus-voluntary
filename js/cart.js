@@ -225,6 +225,15 @@ export function updateCartTotal() {
   }
 }
 
+export function getCartTotal() {
+  const cartItems = getCartItems();
+
+  return cartItems.reduce(
+    (total, item) => total + item.price * item.qtdCart,
+    0,
+  );
+}
+
 export function toggleCart() {
   const cartContainer = document.getElementById("cart-container");
   if (cartContainer) {

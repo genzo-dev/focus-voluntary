@@ -1,4 +1,4 @@
-import { getCartItems } from "./cart.js";
+import { getCartItems, getCartTotal } from "./cart.js";
 
 const checkoutForm = document.getElementById("checkout-form");
 
@@ -15,6 +15,8 @@ const paymentMethodError = document.getElementById("payment-method-error");
 const installmentsError = document.getElementById("installments-error");
 
 const checkoutMessage = document.getElementById("checkout-message");
+
+const MAX_INSTALLMENTS = 12;
 
 function setFieldError(input, errorElement, message) {
   const hasError = Boolean(message);
@@ -102,6 +104,36 @@ function validateCheckoutForm() {
   );
 }
 
+function renderInstallments() {
+  const total = getCartTotal();
+
+  if (total <= 0) {
+    return;
+  }
+
+  const installments = Array.from(
+    { length: MAX_INSTALLMENTS },
+    (_, index) => index + 1,
+  );
+
+  const options = installments.map((installment) => {
+    const installmentValue = total / installment;
+
+    const formattedValue = installmentValue.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+
+    return `
+      <option value="${installment}">
+        ${installment}x de ${formattedValue} sem juros
+      </option>
+    `;
+  });
+
+  installmentsSelect.insertAdjacentHTML("beforeend", options.join(""));
+}
+
 function updateInstallmentsVisibility() {
   const isCreditCard = paymentMethodSelect.value === "credit-card";
 
@@ -160,10 +192,7 @@ checkoutForm?.addEventListener("submit", (event) => {
   const installments =
     paymentMethod === "credit-card" ? Number(installmentsSelect.value) : null;
 
-  const total = cartItems.reduce(
-    (acc, item) => acc + item.price * item.qtdCart,
-    0,
-  );
+  const total = getCartTotal();
 
   const formattedTotal = total.toLocaleString("pt-BR", {
     style: "currency",
@@ -188,5 +217,6 @@ checkoutForm?.addEventListener("submit", (event) => {
 });
 
 export function setupCheckout() {
+  renderInstallments();
   updateInstallmentsVisibility();
 }
