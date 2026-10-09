@@ -3,6 +3,7 @@ import { addToCart } from "./cart.js";
 
 const productsContainer = document.getElementById("products");
 const searchInput = document.getElementById("product-search");
+const categoryFilter = document.getElementById("category-filter");
 
 function listPlatforms(gamePlatforms) {
   return gamePlatforms
@@ -53,16 +54,52 @@ export function setupAddToCartButtons() {
   });
 }
 
-function searchProducts(query) {
-  const normalizedQuery = query.trim().toLowerCase();
+function filterProducts() {
+  const normalizedQuery = searchInput.value.trim().toLowerCase();
 
-  const filteredGames = games.filter((game) =>
-    game.name.toLowerCase().includes(normalizedQuery),
-  );
+  const selectedCategory = categoryFilter.value;
+
+  const filteredGames = games.filter((game) => {
+    const matchesName = game.name.toLowerCase().includes(normalizedQuery);
+
+    const matchesCategory =
+      !selectedCategory || game.genre === selectedCategory;
+
+    return matchesName && matchesCategory;
+  });
 
   listProducts(filteredGames);
 }
 
+searchInput?.addEventListener("input", filterProducts);
+
+categoryFilter?.addEventListener("change", filterProducts);
+
 searchInput?.addEventListener("input", (event) => {
   searchProducts(event.target.value);
 });
+
+function getCategories() {
+  return [
+    ...games.reduce((categories, game) => {
+      categories.add(game.genre);
+
+      return categories;
+    }, new Set()),
+  ];
+}
+
+export function populateCategoryFilter() {
+  const categories = getCategories();
+
+  categoryFilter.innerHTML = `
+    <option value="">Todas as categorias</option>
+    ${categories
+      .map(
+        (category) => `
+          <option value="${category}">${category}</option>
+        `,
+      )
+      .join("")}
+  `;
+}
