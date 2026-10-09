@@ -36,7 +36,7 @@ productsCart?.addEventListener("click", (event) => {
   }
 });
 
-function getCartItems() {
+export function getCartItems() {
   const cart = JSON.parse(localStorage.getItem("cart"));
 
   return Array.isArray(cart) ? cart : [];

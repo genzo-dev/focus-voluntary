@@ -3,6 +3,7 @@ import {
   displayCheckoutItems,
   updateCartTotal,
 } from "./cart.js";
+import { setupCheckout } from "./checkout.js";
 import {
   listProducts,
   populateCategoryFilter,
@@ -24,3 +25,7 @@ if (products) {
 displayCartItems();
 displayCheckoutItems();
 updateCartTotal();
+
+if (checkoutForm) {
+  setupCheckout();
+}
