@@ -4,15 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+
+  <meta
+    name="description"
+    content="Explore jogos, descubra novos títulos e encontre sua próxima aventura na Exp.Store."
+  />
+
+  <title>Exp.Store | Catálogo de Jogos</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./theme.css">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./css/output.css">
 </head>
 
 <body class="min-h-screen flex flex-col bg-[var(--color-background)] text-[var(--color-text)]">
@@ -24,13 +30,13 @@
 
       <ul class="style-none flex gap-4">
         <li>
-          <button id="theme-button"
+          <button id="theme-button" aria-label="Mudar tema"
             class="border border-white/10 bg-green-500/70 hover:bg-green-500 p-2 rounded-full flex items-center justify-center cursor-pointer transition">
             <img src="/assets/images/moon.svg" alt="Mudar tema" />
           </button>
         </li>
         <li>
-          <button id="cart-button"
+          <button id="cart-button" aria-label="Carrinho de Compras"
             class="border border-white/10 bg-green-500/70 hover:bg-green-500 p-2 rounded-full flex items-center justify-center cursor-pointer transition">
             <img src="/assets/images/shopping-bag.svg" alt="Carrinho de Compras" />
           </button>
