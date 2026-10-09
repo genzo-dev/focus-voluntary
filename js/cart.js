@@ -1,6 +1,8 @@
 import { games } from "../mocks/game-data.js";
 
 const productsCart = document.getElementById("products-local-storage");
+const checkoutItemsContainer = document.getElementById("checkout-cart-items");
+
 const cartButton = document.getElementById("cart-button");
 const addOneProductByIdButton = document.getElementById(
   "add-one-product-by-id",
@@ -114,6 +116,70 @@ export function displayCartItems() {
     .join("");
 }
 
+export function displayCheckoutItems() {
+  const checkoutItems = getCartItems();
+
+  if (!checkoutItemsContainer) return;
+
+  if (checkoutItems.length === 0) {
+    checkoutItemsContainer.classList.add(
+      "flex",
+      "items-center",
+      "justify-center",
+      "h-full",
+    );
+
+    checkoutItemsContainer.innerHTML = `<p>Seu carrinho está vazio</p>`;
+
+    return;
+  }
+
+  checkoutItemsContainer.classList.remove(
+    "items-center",
+    "justify-center",
+    "h-full",
+  );
+
+  checkoutItemsContainer.innerHTML = checkoutItems
+    .map(
+      (game) => `
+        <div class="flex flex-col lg:flex-row border border-[var(--color-border-product)] rounded shadow hover:shadow-lg transition backdrop-blur-lg">
+
+          <div class="lg:w-1/3">
+            <img
+              src="${game.imageUrl}"
+              alt="${game.name}"
+              class="w-full h-24 lg:h-24 object-cover"
+            />
+          </div>
+
+          <div class="lg:w-2/3 px-4 py-2 lg:py-4 flex flex-col">
+
+            <div class="flex items-center justify-between">
+              <h3 class="text-base font-semibold mb-2">
+                ${game.name}
+              </h3>
+
+              <p class="mb-2">
+                ${game.qtdCart}x
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <p>A pagar:</p>
+
+              <span class="font-semibold mb-2">
+                R$ ${(game.price * game.qtdCart).toFixed(2)}
+              </span>
+            </div>
+
+          </div>
+        </div>
+      `,
+    )
+    .join("");
+}
+
 export function addOneToCart(gameId) {
   const cartItems = getCartItems();
   const existingItem = cartItems.find((item) => item.id === gameId);
@@ -148,9 +214,14 @@ export function updateCartTotal() {
   );
 
   const cartTotal = document.getElementById("cart-total");
+  const checkoutCartTotal = document.getElementById("checkout-cart-total");
 
   if (cartTotal) {
     cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+  }
+
+  if (checkoutCartTotal) {
+    checkoutCartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
   }
 }
 

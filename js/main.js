@@ -1,13 +1,21 @@
-import { displayCartItems, updateCartTotal } from "./cart.js";
+import {
+  displayCartItems,
+  displayCheckoutItems,
+  updateCartTotal,
+} from "./cart.js";
 import { listProducts, setupAddToCartButtons } from "./product.js";
 import { loadTheme, toggleThemeButton } from "./theme-toggle.js";
 
 loadTheme();
 toggleThemeButton();
 
-listProducts();
-setupAddToCartButtons();
-// searchProducts();
+const products = document.getElementById("products");
+
+if (products) {
+  listProducts();
+  setupAddToCartButtons();
+}
 
 displayCartItems();
+displayCheckoutItems();
 updateCartTotal();

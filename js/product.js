@@ -63,6 +63,6 @@ function searchProducts(query) {
   listProducts(filteredGames);
 }
 
-searchInput.addEventListener("input", (event) => {
+searchInput?.addEventListener("input", (event) => {
   searchProducts(event.target.value);
 });
