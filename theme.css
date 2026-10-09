@@ -1,29 +1,35 @@
+body {
+  font-family: "Sora", sans-serif;
+}
+
 [data-theme="light"] {
   /* Backgrounds */
-  --color-background: #ffffff;
-  --color-surface: #f5f5f5;
+  --color-background: #f8faf9;
+  --color-surface: #dbe7df;
   --color-overlay: rgb(0 0 0 / 0.7);
+  --color-nav: #000000;
 
   /* Text */
-  --color-text: #171717;
-  --color-text-secondary: #525252;
+  --color-text: #14231a;
+  --color-text-secondary: #46574b;
 
   /* Borders */
-  --color-border: #4d4d4d;
-  --color-border-product: #6d6b6b;
+  --color-border: #b7c9bc;
+  --color-border-product: #a4baaa;
 }
 
 [data-theme="dark"] {
   /* Backgrounds */
-  --color-background: #0a0a0a;
-  --color-surface: #171717;
+  --color-background: #080d0a;
+  --color-surface: #111b14;
   --color-overlay: rgb(0 0 0 / 0.7);
+  --color-nav: #242524;
 
   /* Text */
-  --color-text: #f5f5f5;
-  --color-text-secondary: #474646;
+  --color-text: #edf8f0;
+  --color-text-secondary: #a8b8ad;
 
   /* Borders */
-  --color-border: #404040;
-  --color-border-product: #404040;
+  --color-border: #35513d;
+  --color-border-product: #22c55e;
 }

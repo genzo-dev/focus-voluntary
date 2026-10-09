@@ -1,110 +1,141 @@
 <!doctype html>
 <html lang="en" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link rel="stylesheet" href="./theme.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  </head>
-  <body class="min-h-screen flex flex-col bg-[var(--color-background)] text-[var(--color-text)]">
-    <nav class="bg-blue-500 w-full py-6 px-12">
-      <div class="flex items-center justify-between">
-        <a href="/index.html">ALGUMACOISA-STORE</a>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
 
-        <ul class="style-none flex gap-4">
+  <link rel="stylesheet" href="./theme.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="min-h-screen flex flex-col bg-[var(--color-background)] text-[var(--color-text)]">
+  <nav class="bg-[var(--color-nav)] w-full py-6 px-12">
+    <div class="flex items-center justify-between">
+      <a href="/index.html" class="text-2xl md:text-3xl text-white font-bold">
+        Exp<span class="text-green-500">.</span>Store
+      </a>
+
+      <ul class="style-none flex gap-4">
+        <li>
+          <button id="theme-button"
+            class="border border-white/10 bg-green-500/70 hover:bg-green-500 p-2 rounded-full flex items-center justify-center cursor-pointer transition">
+            <img src="/assets/images/moon.svg" alt="Mudar tema" />
+          </button>
+        </li>
+        <li>
+          <button id="cart-button"
+            class="border border-white/10 bg-green-500/70 hover:bg-green-500 p-2 rounded-full flex items-center justify-center cursor-pointer transition">
+            <img src="/assets/images/shopping-bag.svg" alt="Carrinho de Compras" />
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div id="cart-container"
+      class="absolute hidden flex flex-col right-0 bg-[var(--color-overlay)] border border-white/15 rounded-lg p-4 mr-12 mt-4 z-9999 h-[calc(100vh-8rem)] lg:h-90 lg:max-h-120 w-[calc(100vw-6rem)] lg:w-200">
+      <h2 class="text-white text-lg font-semibold mb-4">
+        Carrinho de Compras
+      </h2>
+
+      <div id="cart-items" class="text-white overflow-y-auto flex-1 min-h-0">
+        <section id="products-local-storage" class="flex flex-col gap-4 px-6"></section>
+      </div>
+
+      <div class="flex flex-col items-end justify-center gap-2 mt-4">
+        <span id="cart-total" class="text-white font-semibold">Total: R$ 0,00</span>
+        <a href="/checkout.html"
+          class="bg-green-500 hover:bg-green-600 text-black px-4 py-2 rounded-lg transition cursor-pointer">Finalizar
+          compra</a>
+      </div>
+  </nav>
+  <main class="flex-1 px-12 py-6">
+    <div class="mb-6">
+      <h1 class="text-[var(--color-text)] text-2xl md:text-3xl py-4 md:py-8">Catálogo de Jogos</h1>
+
+      <div class="mb-6 flex flex-col justify-between md:flex-row gap-4">
+        <div class="w-full md:max-w-xl">
+          <label for="product-search" class="sr-only">
+            Buscar jogos
+          </label>
+
+          <input id="product-search" type="search" placeholder="Buscar jogos..."
+            class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] outline-none focus:ring-2 focus:ring-green-500" />
+        </div>
+
+        <div class="w-full md:w-64">
+          <label for="category-filter" class="sr-only">
+            Filtrar jogos por categoria
+          </label>
+
+          <select id="category-filter"
+            class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] outline-none focus:ring-2 focus:ring-green-500">
+            <option value="">Todas as categorias</option>
+          </select>
+        </div>
+      </div>
+
+
+
+
+      <section id="products" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:px-12 xl:px-24"></section>
+  </main>
+
+  <footer
+    class="flex flex-col sm:flex-row  sm:justify-center w-full mt-auto border-t border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-12 gap-8 sm:gap-24">
+    <div class="flex flex-col gap-1 max-w-70">
+      <a href="/index.html" class="text-xl sm:text-2xl font-bold text-[var(--color-text)]">
+        Exp<span class="text-green-500">.</span>Store
+      </a>
+
+      <span class="text-sm">Bem vindo ao Exp <span class="text-green-500">.</span>Store - Sua loja de jogos
+        favorita</span>
+
+      <span class="text-xs mt-4">Desenvolvido por <a href="https://github.com/genzo-dev"
+          class="underline hover:text-green-600">Gabriel Enzo (genzo-dev)</a>.</span>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-12">
+      <div class="flex flex-col gap-1">
+        <label class="text-[var(--color-text)] font-bold">Contato</label>
+        <ul>
           <li>
-            <button
-            id="theme-button"
-              class="border border-white/10 bg-white/5 p-2 rounded-full flex items-center justify-center cursor-pointer"
-            >
-              <img src="/assets/images/moon.svg" alt="Mudar tema" />
-            </button>
+            <a href="#" class="text-sm text-[var(--color-text)] hover:text-green-600">contato@expstore.com</a>
           </li>
           <li>
-            <button
-              id="cart-button"
-              class="relative border border-white/10 bg-white/5 p-2 rounded-full flex items-center justify-center cursor-pointer"
-            >
-              <img
-                src="/assets/images/shopping-bag.svg"
-                alt="Carrinho de Compras"
-              />
-            </button>
+            <a href="#" class="text-sm text-[var(--color-text)] hover:text-green-600">(00) 00000-0000</a>
           </li>
         </ul>
       </div>
-      <div
-        id="cart-container"
-        class="absolute hidden flex flex-col right-0 bg-[var(--color-overlay)] border border-white/15 rounded-lg p-4 mr-12 mt-4 z-9999 h-[calc(100vh-8rem)] lg:h-90 lg:max-h-120 w-[calc(100vw-6rem)] lg:w-200"
-      >
-        <h2 class="text-white text-lg font-semibold mb-4">
-          Carrinho de Compras
-        </h2>
 
-        <div id="cart-items" class="text-white overflow-y-auto flex-1 min-h-0">
-          <section
-            id="products-local-storage"
-            class="flex flex-col gap-4 px-6"
-          ></section>
-        </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-[var(--color-text)] font-bold">Ajuda</label>
 
-        <div class="flex flex-col items-end justify-center gap-2 mt-4">
-          <span id="cart-total" class="text-white font-semibold">Total: R$ 0,00</span>
-          <a href="/checkout.html" class="bg-green-500 hover:bg-green-600 text-black px-4 py-2 rounded-lg transition cursor-pointer">Finalizar compra</a>
+        <ul ul class="flex flex-col gap-1">
+          <li>
+            <a href="#" class="text-sm text-[var(--color-text)] hover:text-green-600">Termos de Uso</a>
+          </li>
+          <li>
+            <a href="#" class="text-sm text-[var(--color-text)] hover:text-green-600">Política de privacidade</a>
+          </li>
+          <li>
+            <a href="#" class="text-sm text-[var(--color-text)] hover:text-green-600">FAQ</a>
+          </li>
+          <li>
+            <a href="#" class="text-sm text-[var(--color-text)] hover:text-green-600">Política de Reembolso</a>
+          </li>
+        </ul>
+
       </div>
-    </nav>
-    <main class="flex-1 px-12 py-6">
-        <div class="mb-6">
-<div class="mb-6 flex flex-col justify-between md:flex-row gap-4">
-  <div class="w-full md:max-w-xl">
-    <label for="product-search" class="sr-only">
-      Buscar jogos
-    </label>
+    </div>
+  </footer>
 
-    <input
-      id="product-search"
-      type="search"
-      placeholder="Buscar jogos..."
-      class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] outline-none focus:ring-2 focus:ring-green-500"
-    />
-  </div>
+  <script type="module" src="/js/main.js"></script>
+</body>
 
-  <div class="w-full md:w-64">
-    <label for="category-filter" class="sr-only">
-      Filtrar jogos por categoria
-    </label>
-
-    <select
-      id="category-filter"
-      class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] outline-none focus:ring-2 focus:ring-green-500"
-    >
-      <option value="">Todas as categorias</option>
-    </select>
-  </div>
-</div>
-
-      <h1 class="text-red-500">ALO</h1>
-
-
-      <section
-        id="products"
-        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:px-12 xl:px-24"
-      ></section>
-      <h2>Produtos no Local Storage:</h2>
-    </main>
-    <footer class="bg-blue-500 w-full py-6 px-12">
-      <div class="flex items-center justify-center">
-        <span>&copy; 2026 ALGUMACOISA-STORE</span>
-      </div>
-    </footer>
-
-    <script type="module" src="/js/main.js"></script>
-  </body>
 </html>

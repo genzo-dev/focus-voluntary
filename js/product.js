@@ -10,9 +10,9 @@ function listPlatforms(gamePlatforms) {
     .map((platform) => {
       const platformData = platforms[platform];
       return `
-      <li class="flex items-center justify-center gap-2 bg-gray-200 p-2 rounded max-w-32">
+      <li class="flex items-center justify-center gap-2 bg-[var(--color-border)] px-2 py-1 rounded max-w-32">
         <img src="${platformData.icon}" alt="${platformData.name}" class="max-w-8" />
-        <span class="text-xs text-[var(--color-text-secondary)]">${platformData.name}</span>
+        <span class="text-xs text-[var(--color-text)] ">${platformData.name}</span>
       </li>
     `;
     })
