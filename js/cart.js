@@ -122,23 +122,16 @@ export function displayCheckoutItems() {
   if (!checkoutItemsContainer) return;
 
   if (checkoutItems.length === 0) {
-    checkoutItemsContainer.classList.add(
-      "flex",
-      "items-center",
-      "justify-center",
-      "h-full",
-    );
+    checkoutItemsContainer.classList.add("items-center", "justify-center");
 
-    checkoutItemsContainer.innerHTML = `<p>Seu carrinho está vazio</p>`;
+    checkoutItemsContainer.innerHTML = `
+    <p>Seu carrinho está vazio</p>
+  `;
 
     return;
   }
 
-  checkoutItemsContainer.classList.remove(
-    "items-center",
-    "justify-center",
-    "h-full",
-  );
+  checkoutItemsContainer.classList.remove("items-center", "justify-center");
 
   checkoutItemsContainer.innerHTML = checkoutItems
     .map(
