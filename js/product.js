@@ -33,8 +33,8 @@ export function listProducts(products = games) {
           <p class="text-sm">${game.description}</p>
           </div>
           <div class="flex items-center justify-between px-4 pb-4">
-            <span>R$ ${game.price.toFixed(2)}</span>
-            <button data-game-id="${game.id}" class="add-to-cart bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 cursor-pointer transition">Adicionar ao carrinho</button>
+            <span class="text-sm sm:text-base">R$ ${game.price.toFixed(2)}</span>
+            <button data-game-id="${game.id}" class="add-to-cart bg-green-700 text-white text-xs sm:text-base py-2 px-4 rounded hover:bg-green-800 cursor-pointer transition">Adicionar ao carrinho</button>
           </div>
       </div>
     `;

@@ -106,12 +106,12 @@ export function displayCartItems() {
           <img src="${games.imageUrl}" alt="${games.name}" class="w-full h-32 lg:h-36 object-cover" />
         </div>
         <div class="lg:w-2/3 px-4 py-2 lg:py-4 flex flex-col">
-          <div class="flex items-center justify-between">
-            <h3 class="text-white text-lg font-semibold mb-2">${games.name}</h3>
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="text-white text-sm sm:text-lg font-semibold mb-2">${games.name}</h3>
             <p class="text-white mb-2">${games.qtdCart}x</p>
           </div>
 
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between text-sm sm:text-base">
             <p>A pagar:</p>
             <span class="text-white font-semibold mb-2">R$ ${(games.price.toFixed(2) * games.qtdCart).toFixed(2)}</span>
           </div>
@@ -160,8 +160,8 @@ export function displayCheckoutItems() {
 
           <div class="lg:w-2/3 px-4 py-2 lg:py-4 flex flex-col">
 
-            <div class="flex items-center justify-between">
-              <h3 class="text-base font-semibold mb-2">
+            <div class="flex items-center justify-between gap-2 sm:gap-4">
+              <h3 class="text-sm sm:text-base font-semibold mb-2">
                 ${game.name}
               </h3>
 
