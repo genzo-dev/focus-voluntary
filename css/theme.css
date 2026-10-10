@@ -2,6 +2,11 @@ body {
   font-family: "Sora", sans-serif;
 }
 
+.checkout-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 [data-theme="light"] {
   /* Backgrounds */
   --color-background: #f8faf9;

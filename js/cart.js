@@ -2,6 +2,7 @@ import { games } from "../mocks/game-data.js";
 
 const productsCart = document.getElementById("products-local-storage");
 const checkoutItemsContainer = document.getElementById("checkout-cart-items");
+const checkoutButton = document.getElementById("checkout-button");
 
 const cartButton = document.getElementById("cart-button");
 
@@ -36,6 +37,22 @@ export function getCartItems() {
   return Array.isArray(cart) ? cart : [];
 }
 
+checkoutButton.addEventListener("click", (event) => {
+  if (getCartItems().length === 0) {
+    event.preventDefault();
+  }
+});
+
+export function isCheckoutButtonDisabled() {
+  if (!checkoutButton) return;
+
+  const cartItems = getCartItems();
+  const isCartEmpty = cartItems.length === 0;
+
+  checkoutButton.classList.toggle("checkout-disabled", isCartEmpty);
+  checkoutButton.classList.toggle("opacity-50", isCartEmpty);
+}
+
 export function addToCart(gameId) {
   const game = games.find((game) => game.id === gameId);
 
@@ -59,6 +76,7 @@ export function addToCart(gameId) {
     displayCartItems();
   }
 
+  isCheckoutButtonDisabled();
   updateCartTotal();
 
   console.log("Adicionado ao carrinho:", game.name);
@@ -136,7 +154,7 @@ export function displayCheckoutItems() {
             <img
               src="${game.imageUrl}"
               alt="${game.name}"
-              class="w-full h-24 lg:h-24 object-cover"
+              class="w-full h-24 lg:h-32 xl:h-24 object-cover"
             />
           </div>
 
@@ -175,6 +193,7 @@ export function addOneToCart(gameId) {
     existingItem.qtdCart += 1;
     localStorage.setItem("cart", JSON.stringify(cartItems));
     displayCartItems();
+    isCheckoutButtonDisabled();
     updateCartTotal();
   }
 }
@@ -189,6 +208,7 @@ export function removeItemFromCart(gameId) {
   cartItems.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cartItems));
   displayCartItems();
+  isCheckoutButtonDisabled();
   updateCartTotal();
 }
 

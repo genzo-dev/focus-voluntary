@@ -1,6 +1,7 @@
 import {
   displayCartItems,
   displayCheckoutItems,
+  isCheckoutButtonDisabled,
   updateCartTotal,
 } from "./cart.js";
 import { setupCheckout } from "./checkout.js";
@@ -24,6 +25,7 @@ if (products) {
 }
 
 displayCartItems();
+isCheckoutButtonDisabled();
 displayCheckoutItems();
 updateCartTotal();
 
