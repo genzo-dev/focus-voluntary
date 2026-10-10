@@ -5,10 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta
-    name="description"
-    content="Explore jogos, descubra novos títulos e encontre sua próxima aventura na Exp.Store."
-  />
+  <meta name="description"
+    content="Explore jogos, descubra novos títulos e encontre sua próxima aventura na Exp.Store." />
+
+  <script>
+    const theme = localStorage.getItem("theme") ?? "light";
+
+    document.documentElement.dataset.theme = theme;
+  </script>
 
   <title>Exp.Store | Catálogo de Jogos</title>
 
