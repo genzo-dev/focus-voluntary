@@ -4,12 +4,6 @@ const productsCart = document.getElementById("products-local-storage");
 const checkoutItemsContainer = document.getElementById("checkout-cart-items");
 
 const cartButton = document.getElementById("cart-button");
-const addOneProductByIdButton = document.getElementById(
-  "add-one-product-by-id",
-);
-const removeProductByIdBuitton = document.getElementById(
-  "remove-product-by-id",
-);
 
 cartButton?.addEventListener("click", toggleCart);
 productsCart?.addEventListener("click", (event) => {
